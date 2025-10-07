@@ -173,9 +173,9 @@ session = bsecure.Session()
 - `head(url, **kwargs)` - Send HEAD request
 - `patch(url, **kwargs)` - Send PATCH request
 - `options(url, **kwargs)` - Send OPTIONS request
-- `get_cookies_dict(url)` - Get cookies as dict for URL
-- `get_cookies_string(url)` - Get cookies as string for URL
-- `set_cookies_dict(url, cookies)` - Set cookies from dict for URL
+- `cookies.get_cookies_dict(url)` - Get cookies as dict for URL
+- `cookies.get_cookies_string(url)` - Get cookies as string for URL
+- `cookies.set_cookies_dict(url, cookies)` - Set cookies from dict for URL
 
 ### Response Object
 
