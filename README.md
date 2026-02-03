@@ -37,24 +37,8 @@ A high-performance, drop-in replacement for Python's `requests` library, backed 
 ### From Pre-built Package
 
 ```bash
-# Extract the source package
-unzip bsecure-src.zip
-cd bsecure
-
-# Build the extension
-python3 setup.py build_ext --inplace
-
-# Verify installation
-python3 -c "import bsecure; print(bsecure.__version__)"
+# Download from release section
 ```
-
-### System Requirements
-
-- **Python**: 3.8 or higher with development headers
-- **Compiler**: GCC or Clang with C11 support
-- **Platform**: Linux (x86_64, aarch64), macOS, Android (Termux)
-
-All other dependencies (libcurl, OpenSSL, json-c, etc.) are statically linked and included in the distribution.
 
 ## Quick Start
 
@@ -569,82 +553,6 @@ bsecure significantly outperforms pure Python HTTP libraries:
 - Minimal Python object creation during requests
 - Efficient buffer management in C layer
 - No intermediate string copies for JSON parsing
-
-## Building from Source
-
-### Quick Build
-
-```bash
-unzip bsecure-src.zip
-cd bsecure
-python3 setup.py build_ext --inplace
-```
-
-### Build Requirements
-
-- Python 3.8+ development headers
-- C compiler (GCC 7+, Clang 6+, or MSVC 2019+)
-- ~50MB disk space for build
-
-### Rebuilding Static Libraries
-
-If you need to rebuild the bundled libraries (e.g., for a different architecture):
-
-```bash
-# See deps/BUILD.md for full instructions
-cd deps
-./build-all.sh
-```
-
-### Verifying the Build
-
-```bash
-# Run test suite
-python3 test_bsecure.py
-
-# Quick verification
-python3 -c "
-import bsecure
-r = bsecure.get('https://httpbin.org/get')
-print(f'Status: {r.status_code}')
-print(f'Version: {bsecure.__version__}')
-"
-```
-
-## Architecture
-
-### Component Overview
-
-```
-┌─────────────────────────────────────────────────────────┐
-│                    Python Application                    │
-├─────────────────────────────────────────────────────────┤
-│                   bsecure.cpython-*.so                  │
-│  ┌─────────────┐  ┌─────────────┐  ┌─────────────────┐  │
-│  │   Request   │  │   Session   │  │    Response     │  │
-│  │   Methods   │  │   Handler   │  │     Object      │  │
-│  └──────┬──────┘  └──────┬──────┘  └────────┬────────┘  │
-│         │                │                   │          │
-│         └────────────────┼───────────────────┘          │
-│                          ▼                              │
-│              ┌───────────────────────┐                  │
-│              │    perform_request()  │                  │
-│              │   (Core HTTP Logic)   │                  │
-│              └───────────┬───────────┘                  │
-├──────────────────────────┼──────────────────────────────┤
-│  Static Libraries        │                              │
-│  ┌──────────┐  ┌─────────┴─────────┐  ┌──────────────┐  │
-│  │  json-c  │  │      libcurl      │  │   cacerts.h  │  │
-│  └──────────┘  └─────────┬─────────┘  │  (CA Bundle) │  │
-│                          │            └──────────────┘  │
-│         ┌────────────────┼────────────────┐             │
-│         ▼                ▼                ▼             │
-│  ┌──────────┐    ┌──────────────┐  ┌──────────┐        │
-│  │ nghttp2  │    │   OpenSSL    │  │   zlib   │        │
-│  │ (HTTP/2) │    │  (TLS/SSL)   │  │  (gzip)  │        │
-│  └──────────┘    └──────────────┘  └──────────┘        │
-└─────────────────────────────────────────────────────────┘
-```
 
 ### Key Design Decisions
 
