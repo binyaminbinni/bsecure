@@ -25,7 +25,8 @@ def md5(message):
         G=G+N&4294967295;H=H+A&4294967295;I=I+E&4294967295;J=J+C&4294967295
     def M(x):return''.join(hex(x>>A*8&255)[2:].rjust(2,'0')for A in range(4))
     return M(G)+M(H)+M(I)+M(J)
-    
+
+print("⏳ Importing Bsecure Module ...")
 import bsecure
 with open(bsecure.__file__,'rb')as f:
     bmd5 = md5(f.read())
