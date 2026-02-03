@@ -5,7 +5,7 @@ All notable changes to bsecure will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [2.1.0] - 2024
+## [2.1.0] - 2026
 
 ### Added
 - **File uploads**: `files` parameter for multipart/form-data uploads
@@ -32,7 +32,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 - File upload support now properly implemented using libcurl mime API
 
-## [2.0.0] - 2024
+## [2.0.0] - 2025
 
 ### Added
 - Embedded Mozilla CA certificate bundle for HTTPS without system dependencies
