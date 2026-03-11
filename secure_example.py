@@ -30,7 +30,9 @@ print("⏳ Importing Bsecure Module ...")
 import bsecure
 with open(bsecure.__file__,'rb')as f:
     bmd5 = md5(f.read())
-    if bmd5!=''.join(['4', '1', '1', '8', 'e', '0', '8', '3', '8', '5', '2', 'f', '7', '0', '9', '9', 'a', '3', '9', '2', '1', '3', 'f', '9', 'f', '2', 'd', 'b', '7', '7', '4', '1']):print('Use updated code from secure_example.py');1/0
+    if bmd5!=''.join(['9', 'd', '7', 'f', 'b', '6', 'b', 'b', '2', 'a', 'c', 'e', '9', '0', 'a', 'f', '1', '4', '9', 'a', '0', '5', '6', '4', 'e', 'c', '5', 'd', 'f', '1', 'f', '9']):
+        print('Use updated code from secure_example.py')
+        1/0
 
 
 #### Write Your Remaining Code here ####
